@@ -3,7 +3,13 @@ import s from './styles';
 
 const Card = (props) => (
 <>
-  <s.Wrapper onClick={props.onClick} className={props.className}>{props.children}</s.Wrapper>
+  <s.Wrapper 
+    bgColor={props.bgColor} 
+    onClick={props.onClick} 
+    className={props.className}
+  >
+    {props.children}
+  </s.Wrapper>
 </>
 );
 

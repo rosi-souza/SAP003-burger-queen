@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import s from './styles';
 import firebase from '../../utils/firebaseUtils'
 import Card from '../Card';
+//import SummaryOrder from '../SummaryOrder';
 
-const Menu = () => {
+const Menu = (props) => {
   let [menu, setMenu] = useState([]);
   let [filteredMenu, setFilteredMenu] = useState([]);
   
@@ -11,7 +12,6 @@ const Menu = () => {
     firebase.firestore().collection('Menu')
       .onSnapshot ((snapshot) => {
         const itensMenu = snapshot.docs.map((doc) => ({
-          id: doc.id,
           ...doc.data(),
         }
         ))
@@ -33,17 +33,23 @@ const Menu = () => {
     }
   }
 
+  // const teste = () => (
+  //     console.log()
+  // );
+
+  console.log(filteredMenu)
   return (
     <s.Wrapper>
       <Card onClick={() => filterItens('Café da manhã')}>Café da manhã</Card>
       <Card onClick={() => filterItens('Lanches')}>Lanche</Card>
       <h4>Cardapio</h4>
       {filteredMenu.map((item) => (
-        <Card>
+        <Card  >
           {item.name}
           <s.Price>R$ {item.price}</s.Price>
         </Card>
       ))}
+      {/* <SummaryOrder /> */}
     </s.Wrapper>
   )
 }
