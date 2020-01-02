@@ -1,19 +1,21 @@
 import * as React from 'react';
 import s from './styles';
-import Card from '../Card';
+//mport Card from '../Card';
 
-const SummaryOrder = ({ items }) => (
-<s.Wrapper>   
-  <Card bgColor="d3d3d3">
+
+const SummaryOrder = ({ items }) => {
+  const total = items.reduce((total, numero) => total + numero.price, 0)
+  console.log(total);
+  return (
+  <s.Wrapper>   
     <s.Title>Resumo de pedidos</s.Title>
       {items.map((item) => (
-        <div>{item.name} - {item.price}
-        
-        </div>
-
+        <div>{item.name} - R$ {item.price}</div>
       ))}
-  </Card>
-</s.Wrapper>
-);
+      {/* <div>{total}</div> */}
+  </s.Wrapper>
+  )
+}
+;
 
 export default SummaryOrder;

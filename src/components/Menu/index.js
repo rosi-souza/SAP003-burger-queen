@@ -4,7 +4,7 @@ import firebase from '../../utils/firebaseUtils'
 import Card from '../Card';
 import SummaryOrder from '../SummaryOrder';
 
-const Menu = (props) => {
+const Menu = () => {
   let [menu, setMenu] = useState([]);
   let [filteredMenu, setFilteredMenu] = useState([]);
   const [summaryOrder, setSummaryOrder] = useState([]);
