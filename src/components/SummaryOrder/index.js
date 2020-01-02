@@ -2,13 +2,15 @@ import * as React from 'react';
 import s from './styles';
 import Card from '../Card';
 
-const SummaryOrder = (items) => (
+const SummaryOrder = ({ items }) => (
 <s.Wrapper>   
   <Card bgColor="d3d3d3">
     <s.Title>Resumo de pedidos</s.Title>
       {items.map((item) => (
-        <div>{item.name}</div>
-      
+        <div>{item.name} - {item.price}
+        
+        </div>
+
       ))}
   </Card>
 </s.Wrapper>
