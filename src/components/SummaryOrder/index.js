@@ -1,21 +1,25 @@
 import * as React from 'react';
 import s from './styles';
-//mport Card from '../Card';
 
 
-const SummaryOrder = ({ items }) => {
+const SummaryOrder = ({ items, deleteItem }) => {
   const total = items.reduce((total, numero) => total + numero.price, 0)
-  console.log(total);
+
   return (
-  <s.Wrapper>   
-    <s.Title>Resumo de pedidos</s.Title>
-      {items.map((item) => (
-        <div>{item.name} - R$ {item.price}</div>
-      ))}
-      {/* <div>{total}</div> */}
-  </s.Wrapper>
+    <s.Wrapper>   
+      <s.Text>Resumo de pedidos</s.Text>
+        {items.map((item, index) => (
+          <>
+          <div>
+            <s.Item>{item.name}</s.Item> <s.Price>- R$ {item.price}</s.Price>
+            <s.Icon onClick={() => deleteItem(index)} className="material-icons">close</s.Icon>
+          </div>
+          </>
+        ))}
+        <s.Text>Total: R$ {total}</s.Text>
+
+    </s.Wrapper>
   )
-}
-;
+};
 
 export default SummaryOrder;

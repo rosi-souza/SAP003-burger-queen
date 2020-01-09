@@ -3,11 +3,14 @@ import s from './styles';
 import firebase from '../../utils/firebaseUtils'
 import Card from '../Card';
 import SummaryOrder from '../SummaryOrder';
+import Button from '../Button';
 
 const Menu = () => {
   let [menu, setMenu] = useState([]);
   let [filteredMenu, setFilteredMenu] = useState([]);
-  const [summaryOrder, setSummaryOrder] = useState([]);
+  let [summaryOrder, setSummaryOrder] = useState([]);
+  const [clientName, setClientName] = useState('');
+  const [tableNumber, setTableNumber] = useState('');
   
   useEffect(() => {
     firebase.firestore().collection('Menu')
@@ -24,32 +27,71 @@ const Menu = () => {
   const filterItens = (typeMenu) => {  
     if (typeMenu === 'Café da manhã'){ 
       const filteredMenu = menu.filter(element => element.breakfast === true)
-      console.log(filteredMenu)
       setFilteredMenu(filteredMenu);
+    
     }
     else if (typeMenu === 'Lanches') {
       const filteredMenu = menu.filter(element => element.breakfast === false)
       setFilteredMenu(filteredMenu);
-  
     }
   }
 
+  const deleteSummaryItem = (index) => {
+    summaryOrder = summaryOrder.filter((_, i) => i !== index)
+    setSummaryOrder(summaryOrder)
+  };
+
+  const sendOrder = () => {
+    const data = {
+      summaryOrder,
+      status: 'AGUARDANDO',
+      clientName,
+      tableNumber,
+      createdAt: Date.now()
+    }
+    firebase.firestore().collection('Order').add(data).then(() => {
+      setClientName(['']);
+      setTableNumber(['']);
+      setSummaryOrder([]);
+    })
+  //   filteredMenu.map(val => {
+  //     return val.Extras.map(x => console.log(x))
+  //  })
+  };
+
+  // const showModal = () => {
+  //   console.log("teste")
+  // };
 
   return (
     <s.Wrapper>
-      <Card onClick={() => filterItens('Café da manhã')}>Café da manhã</Card>
-      <Card onClick={() => filterItens('Lanches')}>Lanche</Card>
-      <h4>Cardapio</h4>
-      {filteredMenu.map((item) => (
-        <Card  onClick={() => setSummaryOrder([...summaryOrder, item])}>
-          {item.name}
-          <s.Price>R$ {item.price}</s.Price>
-        </Card>
-      ))}
-      <SummaryOrder items={summaryOrder}/>
+        <Card onClick={() => filterItens('Café da manhã')}>Café da manhã</Card>
+        <Card onClick={() => filterItens('Lanches')}>Lanche</Card>
+      <s.Row className="row">
+        <s.Col className="col-md-8">
+            <s.Title>Cardapio</s.Title>
+            {filteredMenu.map((item) => (
+              <Card className="card-item" onClick={() =>  setSummaryOrder([...summaryOrder, item])}>
+                  <s.Img bgImg={item.img} alt=""></s.Img>
+                <s.Item>{item.name}</s.Item>
+                <s.Item>R$ {item.price},00</s.Item>
+              </Card>
+              
+            ))}
+        </s.Col>
+        <s.Col className="col-md-4">
+          <s.ContainerLAteral>
+            <SummaryOrder items={summaryOrder} deleteItem={(index) => deleteSummaryItem(index)}/>
+            <span>Digite o nome do cliente</span>
+            <s.Input onChange={(e) => setClientName(e.currentTarget.value)}/>
+            <span>Digite o numero da mesa</span>
+            <s.Input type="number" onChange={(e) => setTableNumber(e.currentTarget.value)}/>
+            <Button text="Enviar" onClick={() => sendOrder()}/>
+          </s.ContainerLAteral>
+        </s.Col>
+      </s.Row>
     </s.Wrapper>
   )
 }
 
 export default Menu;
-//exportar csv - xml json
