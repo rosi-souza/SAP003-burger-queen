@@ -30,6 +30,7 @@ const Kitchen = () => {
 
   return(
     <s.Wrapper>
+      <s.Title>Cozinha</s.Title>
       {summayOrders.map((item) => (
         <Card className="card-kitchen">
         <s.Header>
@@ -45,7 +46,7 @@ const Kitchen = () => {
           </ul>
         </s.List>
         <s.StatusChange>
-          <p>Alterar status do pedido</p>
+          <s.Description>Alterar status do pedido</s.Description>
           <s.Button onClick={() =>updateStatus("PRONTO", item)} color="#27ae60">PRONTO</s.Button>
         </s.StatusChange>
         </Card>

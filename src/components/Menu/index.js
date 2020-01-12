@@ -14,7 +14,6 @@ const Menu = () => {
   const [isModalOpen, setModal] = useState(false);
   const [extras, setExtras] = useState([]);
 
-
   useEffect(() => {
     firebase.firestore().collection('Menu')
       .onSnapshot ((snapshot) => {
@@ -52,28 +51,22 @@ const Menu = () => {
       tableNumber,
       createdAt: Date.now()
     }
-    firebase.firestore().collection('Order').add(data).then(() => {
-      setClientName('');
-      setTableNumber('');
-      setSummaryOrder([]);
-    })
+
+      firebase.firestore().collection('Order').add(data).then(() => {
+        setClientName('');
+        setTableNumber('');
+        setSummaryOrder([]);
+      })
   };
 
- 
-
   const additionalCheck = (item) => {
-  //   filteredMenu.map(val => {
-  //     return val.extras.map(elem => console.log(elem))
-  //  })
-  //console.log(item.extras.map((elem) => elem.name));
-  if (item.extras) {
-    setModal(true)
-    setExtras(item)
-  } else {
-    setSummaryOrder([...summaryOrder, item])
-    // setModal(false)
-  }
- };
+    if (item.extras) {
+      setModal(true)
+      setExtras(item)
+    } else {
+      setSummaryOrder([...summaryOrder, item])
+    }
+  };
 
   return (
     <s.Wrapper>
@@ -82,10 +75,10 @@ const Menu = () => {
           {extras.extras && extras.extras.map((elem) => 
             <div> 
               <label>{elem.name}</label>
-              <input type="radio" value={elem.price}/>
+              <input onChange={() => console.log(elem.price + extras.price)}type="radio" name="extras" value={elem} />
             </div>
           )}
-          <Button onClick={() => setSummaryOrder([...summaryOrder, extras])} text="Enviar"/>
+          <Button onClick={() => setSummaryOrder([...summaryOrder, extras])} text="Adicionar"/>
         </s.Modal>
         <Card onClick={() => filterItens('Café da manhã')}>Café da manhã</Card>
         <Card onClick={() => filterItens('Lanches')}>Lanche</Card>

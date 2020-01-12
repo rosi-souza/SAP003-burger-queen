@@ -6,6 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import Kitchen from './components/Kitchen';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -15,8 +16,11 @@ function App() {
         <Route path="/salao">
           <Menu />
         </Route>
-        <Route path="/">
+        <Route path="/cozinha">
           <Kitchen />
+        </Route>
+        <Route path="/">
+          <Home />
         </Route>
       </Switch>
     </Router>

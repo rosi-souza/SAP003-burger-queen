@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export default {
   Wrapper: styled.section`
+    background:#FAB130;
+    padding: 14px;
     .card-kitchen {
       height: 100%;
       width: 50%;
@@ -27,4 +29,14 @@ export default {
     font-weight: 700;
     border: none;
   `, 
+  Title: styled.h2`
+
+  `,
+  Description: styled.p`
+    font-size: 20px;
+    font-weight: 500;
+  `,
+  Text: styled.span`
+ font-size: 20px;  
+  `
 }
