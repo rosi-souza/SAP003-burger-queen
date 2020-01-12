@@ -11,7 +11,10 @@ const Menu = () => {
   let [summaryOrder, setSummaryOrder] = useState([]);
   const [clientName, setClientName] = useState('');
   const [tableNumber, setTableNumber] = useState('');
-  
+  const [isModalOpen, setModal] = useState(false);
+  const [extras, setExtras] = useState([]);
+
+
   useEffect(() => {
     firebase.firestore().collection('Menu')
       .onSnapshot ((snapshot) => {
@@ -50,33 +53,52 @@ const Menu = () => {
       createdAt: Date.now()
     }
     firebase.firestore().collection('Order').add(data).then(() => {
-      setClientName(['']);
-      setTableNumber(['']);
+      setClientName('');
+      setTableNumber('');
       setSummaryOrder([]);
     })
-  //   filteredMenu.map(val => {
-  //     return val.Extras.map(x => console.log(x))
-  //  })
   };
 
-  // const showModal = () => {
-  //   console.log("teste")
-  // };
+ 
+
+  const additionalCheck = (item) => {
+  //   filteredMenu.map(val => {
+  //     return val.extras.map(elem => console.log(elem))
+  //  })
+  //console.log(item.extras.map((elem) => elem.name));
+  if (item.extras) {
+    setModal(true)
+    setExtras(item)
+  } else {
+    setSummaryOrder([...summaryOrder, item])
+    // setModal(false)
+  }
+ };
 
   return (
     <s.Wrapper>
+        <s.Modal open={isModalOpen}>
+          {extras.name}
+          {extras.extras && extras.extras.map((elem) => 
+            <div> 
+              <label>{elem.name}</label>
+              <input type="radio" value={elem.price}/>
+            </div>
+          )}
+          <Button onClick={() => setSummaryOrder([...summaryOrder, extras])} text="Enviar"/>
+        </s.Modal>
         <Card onClick={() => filterItens('Café da manhã')}>Café da manhã</Card>
         <Card onClick={() => filterItens('Lanches')}>Lanche</Card>
       <s.Row className="row">
         <s.Col className="col-md-8">
             <s.Title>Cardapio</s.Title>
-            {filteredMenu.map((item) => (
-              <Card className="card-item" onClick={() =>  setSummaryOrder([...summaryOrder, item])}>
-                  <s.Img bgImg={item.img} alt=""></s.Img>
+            {filteredMenu.map((item, index) => (
+            // <Card key={index} className="card-item" onClick={() => setSummaryOrder([...summaryOrder, item])}></Card>
+              <Card key={index} className="card-item" onClick={() => additionalCheck(item)}>
+                <s.Img bgImg={item.img} alt=""></s.Img>
                 <s.Item>{item.name}</s.Item>
                 <s.Item>R$ {item.price},00</s.Item>
               </Card>
-              
             ))}
         </s.Col>
         <s.Col className="col-md-4">

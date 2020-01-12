@@ -1,7 +1,6 @@
 import * as React from 'react';
 import s from './styles';
 
-//COMPONENTE CARDS QUE USO NOS ITENS DO CARDAPIO
 const Card = (props) => (
 <>
   <s.Wrapper 

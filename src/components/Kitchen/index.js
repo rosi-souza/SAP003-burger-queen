@@ -14,7 +14,8 @@ const Kitchen = () => {
           ...doc.data(),
         }
         ))
-        setSummayOrders(itensSummaryOrder) 
+        setSummayOrders(itensSummaryOrder)
+        console.log(itensSummaryOrder) 
       })
   }, []);
 

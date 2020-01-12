@@ -34,12 +34,19 @@ export default{
     margin: 12px 0px;
     margin: auto;
   `,
-  //CARD FEITO DIRETAMENTE NA DIV PARA O RESUMO DE PEDIDO
   ContainerLAteral: styled.div`
     border-radius: 8px;
     border: solid 2px #ececec;
     padding: 8px;
     text-align: center;
+  `,
+  Modal: styled.div`
+    display: ${props => props.open ? 'block' : 'none'};
+    height: 400px;
+    width: 400px;
+    background-color: #95a5a6;
+    color: white; 
+    font-size: 20px;
   `,
   Content: styled.div`
   `,

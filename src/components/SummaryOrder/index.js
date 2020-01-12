@@ -2,7 +2,7 @@ import * as React from 'react';
 import s from './styles';
 
 
-const SummaryOrder = ({ items, deleteItem }) => {
+const SummaryOrder = ({ items, deleteItem, itemsModal }) => {
   const total = items.reduce((total, numero) => total + numero.price, 0)
 
   return (
@@ -23,3 +23,4 @@ const SummaryOrder = ({ items, deleteItem }) => {
 };
 
 export default SummaryOrder;
+//https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio
