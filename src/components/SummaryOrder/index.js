@@ -3,9 +3,13 @@ import s from './styles';
 
 
 const SummaryOrder = ({ items, deleteItem }) => {
-  const total = items.reduce((total, numero) => total + numero.price, 0)
+   //const total = items.reduce((total, numero) => total + numero.price, 0)
+  const total = items.reduce((total, numero) => {
+    console.log(numero);
+    const priceExtra = numero.selectedExtra === undefined ? 0 : 1;
+    return ((total + numero.price) + priceExtra)}, 0)
   
-  
+
   return (
     <s.Wrapper>   
       <s.Text>Resumo de pedidos</s.Text>
@@ -13,11 +17,6 @@ const SummaryOrder = ({ items, deleteItem }) => {
           <>
           <div>
             <s.Item>{item.name}</s.Item> <s.Price>- R$ {item.price}</s.Price>
-            {/* {item.extras.map((elem) => (
-              <div>
-              <s.Item>Extra: {elem.name}</s.Item> - <s.Price>R$ {elem.price},00</s.Price>
-              </div>
-            ))} */}
             <s.Icon onClick={() => deleteItem(index)} className="material-icons">close</s.Icon>
           </div>
           </>

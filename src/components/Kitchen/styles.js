@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export default {
   Wrapper: styled.section`
-    background:#FAB130;
+    background:#F0f0f0;
     padding: 14px;
     .card-kitchen {
       height: 100%;

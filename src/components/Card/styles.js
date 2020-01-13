@@ -8,7 +8,7 @@ export default {
     padding: 12px;
     margin: 8px;
     border-radius: 4px;
-    border: 1px solid #ecf0f1;
+    border: 1px solid white;
     background-color: ${props => props.bgColor || "#ecf0f1"};
     width: 120px;
     height: 80px;

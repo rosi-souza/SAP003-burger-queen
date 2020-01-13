@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export default{
   Wrapper: styled.div`
-    background:#FAB130;
+    background:#F0f0f0;
     padding: 14px;
     .card-item {
       width: 176px;
@@ -39,7 +39,7 @@ export default{
   `,
   ContainerLAteral: styled.div`
     border-radius: 8px;
-    border: solid 2px #ececec;
+    border: solid 2px white;
     padding: 8px;
     text-align: center;
   `,
