@@ -57,6 +57,7 @@ const Menu = () => {
         setTableNumber('');
         setSummaryOrder([]);
       })
+    setModal(false)
   };
 
   const additionalCheck = (item) => {
@@ -69,10 +70,11 @@ const Menu = () => {
     }
   };
 
-    const update = () => {
+    const updatePrice = () => {
 
       // console.log(...summaryOrder)
       extras.price = extras.price + 1
+      // console.log(extras.map(elem => elem.name))
       console.log(extras.price)
       setSummaryOrder([...summaryOrder, extras])
       setModal(false)
@@ -89,8 +91,8 @@ const Menu = () => {
             <label className="extras">{elem.name}</label>
           </div>
         )}
-        <Button onClick={() => update()} text="Adicionar"/>
-        {/* <Button onClick={() => setSummaryOrder([...summaryOrder, extras ])} text="Cancelar"/> */}
+        <Button onClick={() => updatePrice()} text="Adicionar"/>
+        <Button onClick={() => sendOrder()} text="Cancelar"/>
       </s.Modal>
       <Card onClick={() => filterItens('Café da manhã')}>Café da manhã</Card>
       <Card onClick={() => filterItens('Lanches')}>Lanche</Card>
