@@ -5,6 +5,7 @@ import s from './styles';
 const SummaryOrder = ({ items, deleteItem }) => {
   const total = items.reduce((total, numero) => total + numero.price, 0)
   
+  
   return (
     <s.Wrapper>   
       <s.Text>Resumo de pedidos</s.Text>
@@ -26,6 +27,7 @@ const SummaryOrder = ({ items, deleteItem }) => {
     </s.Wrapper>
   )
 };
+
 
 export default SummaryOrder;
 //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio

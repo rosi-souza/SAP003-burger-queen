@@ -65,26 +65,38 @@ const Menu = () => {
       setExtras(item)
     } else {
       setSummaryOrder([...summaryOrder, item])
+      setModal(false)
     }
   };
 
+    const update = () => {
+
+      // console.log(...summaryOrder)
+      extras.price = extras.price + 1
+      console.log(extras.price)
+      setSummaryOrder([...summaryOrder, extras])
+      setModal(false)
+    }
+
+  
   return (
     <s.Wrapper>
-        <s.Modal open={isModalOpen}>
-          {extras.name}
-          {extras.extras && extras.extras.map((elem) => 
-            <div> 
-              <label>{elem.name}</label>
-              <input onChange={() => console.log(elem.price + extras.price)}type="radio" name="extras" value={elem} />
-            </div>
-          )}
-          <Button onClick={() => setSummaryOrder([...summaryOrder, extras])} text="Adicionar"/>
-        </s.Modal>
-        <Card onClick={() => filterItens('Café da manhã')}>Café da manhã</Card>
-        <Card onClick={() => filterItens('Lanches')}>Lanche</Card>
+      <s.Modal open={isModalOpen}>
+        {extras.name}
+        {extras.extras && extras.extras.map((elem) => 
+          <div> 
+            <input onChange={() => console.log(elem.price + extras.price)}type="radio" name="extras" value={elem} />
+            <label className="extras">{elem.name}</label>
+          </div>
+        )}
+        <Button onClick={() => update()} text="Adicionar"/>
+        {/* <Button onClick={() => setSummaryOrder([...summaryOrder, extras ])} text="Cancelar"/> */}
+      </s.Modal>
+      <Card onClick={() => filterItens('Café da manhã')}>Café da manhã</Card>
+      <Card onClick={() => filterItens('Lanches')}>Lanche</Card>
+      <s.Title>Cardapio</s.Title>
       <s.Row className="row">
         <s.Col className="col-md-8">
-            <s.Title>Cardapio</s.Title>
             {filteredMenu.map((item, index) => (
             // <Card key={index} className="card-item" onClick={() => setSummaryOrder([...summaryOrder, item])}></Card>
               <Card key={index} className="card-item" onClick={() => additionalCheck(item)}>

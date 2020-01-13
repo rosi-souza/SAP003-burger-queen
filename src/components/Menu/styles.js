@@ -9,6 +9,9 @@ export default{
       height: 208px;
       padding: 0;
     }
+    .extras {
+      color: #05133B;
+    }
   `,
   Img: styled.div`
     background-image: url('${props => props.bgImg}');
@@ -44,9 +47,16 @@ export default{
     display: ${props => props.open ? 'block' : 'none'};
     height: 400px;
     width: 400px;
-    background-color: #95a5a6;
+    background-color:  rgba(0, 0, 0, 0.7);
     color: white; 
     font-size: 20px;
+    border-radius: 8px;
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); */
   `,
   Content: styled.div`
   `,

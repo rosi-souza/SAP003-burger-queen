@@ -1,14 +1,14 @@
 import * as React from 'react';
 import s from './styles';
 
-const Card = (props) => (
+const Card = ({ bgColor, onClick, className, children }) => (
 <>
   <s.Wrapper 
-    bgColor={props.bgColor} 
-    onClick={props.onClick} 
-    className={props.className}
+    bgColor={bgColor} 
+    onClick={onClick} 
+    className={className}
   >
-    {props.children}
+    {children}
   </s.Wrapper>
 </>
 );
