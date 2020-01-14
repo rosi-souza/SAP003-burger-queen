@@ -70,16 +70,12 @@ export default{
   Col: styled.section`
   `,
   Container: styled.div`
-     display: block;
+    display: block;
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
   `,
   Checkmark: styled.span`
     position: absolute;
@@ -89,10 +85,8 @@ export default{
     width: 25px;
     background-color: #eee;
     border-radius: 50%;
-    ::after{
-      content: "";
-      position: absolute;
-      display: none;
+    :hover{
+      background-color: #ee5253; 
     }
   `,
   SelectItem: styled.input`

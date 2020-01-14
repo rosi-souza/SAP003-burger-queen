@@ -111,8 +111,8 @@ const Menu = () => {
             <s.Modal open={isModalOpen}>
               {extras.name} 
               {extras.extras && extras.extras.map((elem) => 
-                <s.Container> 
-                  <s.SelectItem checked="checked" onChange={() => setSelectedExtra(elem)} type="radio" name="extras" value={elem} />
+                <s.Container > 
+                  <s.SelectItem onChange={() => setSelectedExtra(elem)} type="radio" name="extras" value={elem} />
                   <label className="extras">{elem.name}</label>
                   <s.Checkmark />
                 </s.Container>
