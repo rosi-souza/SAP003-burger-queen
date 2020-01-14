@@ -89,28 +89,33 @@ const Menu = () => {
       <s.Modal open={isModalOpen}>
         {extras.name} 
         {extras.extras && extras.extras.map((elem) => 
-          <div> 
-            <input onChange={() => setSelectedExtra(elem)} type="radio" name="extras" value={elem} />
-            <label className="extras">{elem.name}</label>
-          </div>
+          <s.Container> 
+            <s.SelectItem checked onChange={() => setSelectedExtra(elem)} type="radio" name="extras" value={elem} />
+            <label className="extras">{elem.name}  </label>
+            <s.Checkmark />
+          </s.Container>
         )}
         <Button onClick={() => updatePrice()} text="Adicionar"/>
-        <Button onClick={() =>  cancelExtras()} text="Sem adicional"/>
+        <Button className="button-add"onClick={() =>  cancelExtras()} text="Sem adicional" />
       </s.Modal>
-      <Card onClick={() => filterItens('Café da manhã')}>Café da manhã</Card>
-      <Card onClick={() => filterItens('Lanches')}>Lanche</Card>
+      <Card className="card-filter" onClick={() => filterItens('Café da manhã')}>
+        Café da manhã
+      </Card>
+      <Card className="card-filter" onClick={() => filterItens('Lanches')}>
+        Lanche
+      </Card>
       <s.Title>Cardapio</s.Title>
       <s.Row className="row">
-        <s.Col >
-            {filteredMenu.map((item, index) => (
-              <Card key={index} className="card-item" onClick={() => additionalCheck(item)}>
-                <s.Img bgImg={item.img} alt=""></s.Img>
-                <s.Item>{item.name}</s.Item>
-                <s.Item>R$ {item.price},00</s.Item>
-              </Card>
-            ))}
+        <s.Col className="col-md-6">
+          {filteredMenu.map((item, index) => (
+            <Card key={index} className="card-item" onClick={() => additionalCheck(item)}>
+              <s.Img bgImg={item.img} alt=""></s.Img>
+              <s.Item>{item.name}</s.Item>
+              <s.Item>R$ {item.price},00</s.Item>
+            </Card>
+          ))}
         </s.Col>
-        <s.Col>
+        <s.Col className="cl-md-6">
           <s.ContainerLAteral>
             <SummaryOrder items={summaryOrder} deleteItem={(index) => deleteSummaryItem(index)}/>
             <span>Digite o nome do cliente</span>

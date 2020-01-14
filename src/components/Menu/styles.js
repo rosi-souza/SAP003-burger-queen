@@ -12,6 +12,16 @@ export default{
     .extras {
       color: #05133B;
     }
+    .card-filter {
+      border-color: #ee5253;
+      color: #05133B;
+    }
+    .button-add {
+      background: white;
+      color: #ee5253;
+      border: solid 1px #ee5253;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    }
   `,
   Img: styled.div`
     background-image: url('${props => props.bgImg}');
@@ -47,7 +57,7 @@ export default{
     display: ${props => props.open ? 'block' : 'none'};
     height: 400px;
     width: 400px;
-    background-color:  rgba(0, 0, 0, 0.7);
+    background-color: white;
     color: white; 
     font-size: 20px;
     border-radius: 8px;
@@ -65,5 +75,35 @@ export default{
   Col: styled.div`
   `,
   Container: styled.div`
+     display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   `,
+  Checkmark: styled.span`
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    ::after{
+      content: "";
+      position: absolute;
+      display: none;
+      background-color: #2196F3;
+    }
+  `,
+  SelectItem: styled.input`
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;  
+  `
 }

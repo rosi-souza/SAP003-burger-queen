@@ -7,11 +7,10 @@ export default {
     .card-kitchen {
       height: 100%;
       width: 50%;
+      border: 1px #27ae60 solid;
     }
   `,
   Header: styled.div`
-    
-    /* background-color: white; */
   `,
   List: styled.div`
   text-align: initial;
@@ -37,6 +36,6 @@ export default {
     font-weight: 500;
   `,
   Text: styled.span`
- font-size: 20px;  
+    font-size: 20px;  
   `
 }

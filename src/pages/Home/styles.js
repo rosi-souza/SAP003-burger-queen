@@ -4,12 +4,9 @@ export default {
   Wrapper: styled.main`
     background:#F0f0f0;
     padding: 14px;
-    /* height: 100vw; */
-  
     .card-home { 
       height: 400px;
-      width: 50%;
-      
+      width: 70%;
     }
   `,
   Img: styled.div`
@@ -17,14 +14,13 @@ export default {
     width: 100%;
     height: 100%;
     background-position: center; 
-  er-radius: 4px;
+    border-radius: 4px;
   `,
   Row: styled.div`
     display: flex;
     height: 100vh;
-  
   `,
   Col: styled.div`
-      align-self: flex-start;
+    align-self: flex-start;
   `,
 }

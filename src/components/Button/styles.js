@@ -10,6 +10,7 @@ export default {
     padding: 18px 36px;
     color: #FFFFFF;
     font-size: 20px;
+    margin: 8px; 
     :focus{
       outline: none;
     }

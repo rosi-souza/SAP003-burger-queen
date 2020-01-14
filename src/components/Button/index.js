@@ -1,8 +1,9 @@
 import React from 'react';
 import s from './styles';
 
-const Button = ({onClick, text}) => (
-  <s.Wrapper onClick={onClick}>{text}
+const Button = ({onClick, text, className}) => (
+  <s.Wrapper onClick={onClick}className={className}>
+    {text}
   </s.Wrapper>
 );
 
