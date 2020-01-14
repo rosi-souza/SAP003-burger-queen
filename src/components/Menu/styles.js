@@ -47,7 +47,7 @@ export default{
     margin: 12px 0px;
     margin: auto;
   `,
-  ContainerLAteral: styled.div`
+  ContainerSide: styled.div`
     border-radius: 8px;
     border: solid 2px white;
     padding: 8px;
@@ -55,18 +55,13 @@ export default{
   `,
   Modal: styled.div`
     display: ${props => props.open ? 'block' : 'none'};
-    height: 400px;
+    height: 200px;
     width: 400px;
     background-color: white;
     color: white; 
     font-size: 20px;
     border-radius: 8px;
-    /* position: fixed;
-    top: 0;
-    left: 0;
-    width:100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); */
+    margin: auto;
   `,
   Content: styled.div`
   `,
@@ -98,12 +93,11 @@ export default{
       content: "";
       position: absolute;
       display: none;
-      background-color: #2196F3;
     }
   `,
   SelectItem: styled.input`
     position: absolute;
     opacity: 0;
-    cursor: pointer;  
-  `
+    cursor: pointer;
+  `,
 }

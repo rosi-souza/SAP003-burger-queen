@@ -63,7 +63,6 @@ const Menu = () => {
   };
 
   const additionalCheck = (item) => {
-    //console.log(item)
     if (item.extras) {
       setModal(true)
       setExtras(item)
@@ -86,18 +85,6 @@ const Menu = () => {
 
   return (
     <s.Wrapper>
-      <s.Modal open={isModalOpen}>
-        {extras.name} 
-        {extras.extras && extras.extras.map((elem) => 
-          <s.Container> 
-            <s.SelectItem checked onChange={() => setSelectedExtra(elem)} type="radio" name="extras" value={elem} />
-            <label className="extras">{elem.name}  </label>
-            <s.Checkmark />
-          </s.Container>
-        )}
-        <Button onClick={() => updatePrice()} text="Adicionar"/>
-        <Button className="button-add"onClick={() =>  cancelExtras()} text="Sem adicional" />
-      </s.Modal>
       <Card className="card-filter" onClick={() => filterItens('Café da manhã')}>
         Café da manhã
       </Card>
@@ -116,14 +103,26 @@ const Menu = () => {
           ))}
         </s.Col>
         <s.Col className="cl-md-6">
-          <s.ContainerLAteral>
+          <s.ContainerSide>
+            <s.Modal open={isModalOpen}>
+              {extras.name} 
+              {extras.extras && extras.extras.map((elem) => 
+                <s.Container> 
+                  <s.SelectItem checked="checked" onChange={() => setSelectedExtra(elem)} type="radio" name="extras" value={elem} />
+                  <label className="extras">{elem.name}</label>
+                  <s.Checkmark />
+                </s.Container>
+              )}
+              <Button onClick={() => updatePrice()} text="Adicionar"/>
+              <Button className="button-add"onClick={() =>  cancelExtras()} text="Sem adicional" />
+            </s.Modal>
             <SummaryOrder items={summaryOrder} deleteItem={(index) => deleteSummaryItem(index)}/>
             <span>Digite o nome do cliente</span>
             <s.Input onChange={(e) => setClientName(e.currentTarget.value)}/>
             <span>Digite o numero da mesa</span>
             <s.Input type="number" onChange={(e) => setTableNumber(e.currentTarget.value)}/>
             <Button text="Enviar" onClick={() => sendOrder()}/>
-          </s.ContainerLAteral>
+          </s.ContainerSide>
         </s.Col>
       </s.Row>
     </s.Wrapper>
