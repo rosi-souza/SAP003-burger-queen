@@ -51,7 +51,8 @@ const Menu = () => {
       status: 'AGUARDANDO',
       clientName,
       tableNumber,
-      createdAt: Date.now()
+      createdAt: Date.now(),
+      selectedExtra
     }
 
       firebase.firestore().collection('Order').add(data).then(() => {
@@ -62,7 +63,7 @@ const Menu = () => {
   };
 
   const additionalCheck = (item) => {
-    console.log(item)
+    //console.log(item)
     if (item.extras) {
       setModal(true)
       setExtras(item)
@@ -73,7 +74,8 @@ const Menu = () => {
   };
 
     const updatePrice = () => {
-      setSummaryOrder([...summaryOrder, {...extras, selectedExtra: setSelectedExtra}])
+      setSummaryOrder([...summaryOrder, {...extras, selectedExtra: selectedExtra}])
+      console.log('extra', selectedExtra)
       setModal(false)
     }
 
@@ -85,7 +87,7 @@ const Menu = () => {
   return (
     <s.Wrapper>
       <s.Modal open={isModalOpen}>
-        {extras.name}
+        {extras.name} 
         {extras.extras && extras.extras.map((elem) => 
           <div> 
             <input onChange={() => setSelectedExtra(elem)} type="radio" name="extras" value={elem} />
@@ -99,9 +101,8 @@ const Menu = () => {
       <Card onClick={() => filterItens('Lanches')}>Lanche</Card>
       <s.Title>Cardapio</s.Title>
       <s.Row className="row">
-        <s.Col className="col-md-8">
+        <s.Col >
             {filteredMenu.map((item, index) => (
-            // <Card key={index} className="card-item" onClick={() => setSummaryOrder([...summaryOrder, item])}></Card>
               <Card key={index} className="card-item" onClick={() => additionalCheck(item)}>
                 <s.Img bgImg={item.img} alt=""></s.Img>
                 <s.Item>{item.name}</s.Item>
@@ -109,7 +110,7 @@ const Menu = () => {
               </Card>
             ))}
         </s.Col>
-        <s.Col className="col-md-4">
+        <s.Col>
           <s.ContainerLAteral>
             <SummaryOrder items={summaryOrder} deleteItem={(index) => deleteSummaryItem(index)}/>
             <span>Digite o nome do cliente</span>
