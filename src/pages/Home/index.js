@@ -7,20 +7,25 @@ import kitchen from '../../utils/Images/kitchen.jpeg';
 
 const Home = () => (
   <s.Wrapper>
-    <s.Row clasName="row">
-        <Card className="card-home">
-          <Link to="/salao">
-            <s.Img bgImg={hall} />
-          </Link>
-        </Card>
+    <s.Row className="row">
+      <s.Col> 
+        <h2>Hall</h2>
+      <Card className="card-home">
+        <Link to="/salao">
+          <s.Img bgImg={hall} />
+        </Link>
+      </Card>
+      </s.Col>
+      <s.Col>
+        <h2>Cozinha</h2>
         <Card className="card-home">
           <Link to="/cozinha">
           <s.Img bgImg={kitchen} />
           </Link>
         </Card>
+      </s.Col>
     </s.Row>
   </s.Wrapper>
-)
-
+);
 
 export default Home;

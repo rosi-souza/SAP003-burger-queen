@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default {
-  Wrapper: styled.section`
+  Wrapper: styled.main`
     background:#F0f0f0;
     padding: 14px;
     .card-kitchen {
@@ -37,5 +37,9 @@ export default {
   `,
   Text: styled.span`
     font-size: 20px;  
-  `
+  `,
+    Icon: styled.i`
+    font-size: 40px;
+    color: #ee5253;
+   `,
 }

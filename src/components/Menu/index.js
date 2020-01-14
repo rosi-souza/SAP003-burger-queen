@@ -4,6 +4,7 @@ import firebase from '../../utils/firebaseUtils'
 import Card from '../Card';
 import SummaryOrder from '../SummaryOrder';
 import Button from '../Button';
+import { Link } from 'react-router-dom';
 
 const Menu = () => {
   let [menu, setMenu] = useState([]);
@@ -91,6 +92,9 @@ const Menu = () => {
       <Card className="card-filter" onClick={() => filterItens('Lanches')}>
         Lanche
       </Card>
+      <Link to="/home">
+        <s.Icon className="material-icons">house</s.Icon>
+      </Link>
       <s.Title>Cardapio</s.Title>
       <s.Row className="row">
         <s.Col className="col-md-6">

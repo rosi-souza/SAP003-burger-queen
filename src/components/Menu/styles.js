@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default{
-  Wrapper: styled.div`
+  Wrapper: styled.main`
     background:#F0f0f0;
     padding: 14px;
     .card-item {
@@ -67,7 +67,7 @@ export default{
   `,
   Row: styled.div`
   `,
-  Col: styled.div`
+  Col: styled.section`
   `,
   Container: styled.div`
      display: block;
@@ -99,5 +99,9 @@ export default{
     position: absolute;
     opacity: 0;
     cursor: pointer;
+  `,
+  Icon: styled.i`
+   font-size: 40px;
+   color: #ee5253;
   `,
 }

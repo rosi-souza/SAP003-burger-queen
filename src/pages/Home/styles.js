@@ -5,8 +5,8 @@ export default {
     background:#F0f0f0;
     padding: 14px;
     .card-home { 
-      height: 400px;
-      width: 70%;
+      height: 200px;
+      width: 400px;
     }
   `,
   Img: styled.div`
@@ -15,12 +15,11 @@ export default {
     height: 100%;
     background-position: center; 
     border-radius: 4px;
+
   `,
   Row: styled.div`
-    display: flex;
     height: 100vh;
   `,
   Col: styled.div`
-    align-self: flex-start;
   `,
 }

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import firebase from '../../utils/firebaseUtils'
 import Card from '../Card';
 import s from './styles';
+import { Link } from 'react-router-dom';
 
 const Kitchen = () => {
   const [summayOrders, setSummayOrders] = useState([]);
@@ -30,6 +31,9 @@ const Kitchen = () => {
 
   return(
     <s.Wrapper>
+       <Link to="/home">
+        <s.Icon className="material-icons">house</s.Icon>
+      </Link>
       <s.Title>Cozinha</s.Title>
       {summayOrders.map((item) => (
         <Card className="card-kitchen">
