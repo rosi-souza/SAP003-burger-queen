@@ -3,12 +3,13 @@ import firebase from '../../utils/firebaseUtils'
 import Card from '../Card';
 import s from './styles';
 import { Link } from 'react-router-dom';
+import db from '../../utils/firebaseUtils';
 
 const Kitchen = () => {
   const [summayOrders, setSummayOrders] = useState([]);
 
   useEffect(() => {
-    firebase.firestore().collection('Order')
+    db.collection('Order')
       .onSnapshot ((snapshot) => {
         const itensSummaryOrder = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -23,7 +24,7 @@ const Kitchen = () => {
   const updateStatus = (status, item) => {
     const time = (Math.abs(new Date() - new Date(item.createdAt)) / 36e5) * 60;
     console.log(time)
-    firebase.firestore().collection('Order').doc(item.id).update({
+    db.collection('Order').doc(item.id).update({
       status,
       timeTotal: ~~(time)
     })

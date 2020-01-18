@@ -4,8 +4,8 @@
 
 ## Imagens
 ![Home](src/utils/Images/home.png "Home")
-![Home](src/utils/Images/salao.png "Hall")
-![Home](src/utils/Images/cozinha.png "Cozinha")
+![Hall](src/utils/Images/salao.png "Hall")
+![Cozinha](src/utils/Images/cozinha.png "Cozinha")
 
 ## Ferramentas
  * Javascript 

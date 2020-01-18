@@ -22,6 +22,11 @@ export default{
       border: solid 1px #ee5253;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     }
+    .container-scroll {
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+    }
   `,
   Img: styled.div`
     background-image: url('${props => props.bgImg}');

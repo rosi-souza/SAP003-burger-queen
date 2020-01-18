@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import s from './styles';
-import firebase from '../../utils/firebaseUtils'
 import Card from '../Card';
 import SummaryOrder from '../SummaryOrder';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
+import db from '../../utils/firebaseUtils';
 
 const Menu = () => {
   let [menu, setMenu] = useState([]);
@@ -18,7 +18,7 @@ const Menu = () => {
 
 
   useEffect(() => {
-    firebase.firestore().collection('Menu')
+    db.collection('Menu')
       .onSnapshot ((snapshot) => {
         const itensMenu = snapshot.docs.map((doc) => ({
           ...doc.data(),
@@ -56,7 +56,7 @@ const Menu = () => {
       selectedExtra
     }
 
-      firebase.firestore().collection('Order').add(data).then(() => {
+      db.collection('Order').add(data).then(() => {
         setClientName('');
         setTableNumber('');
         setSummaryOrder([]);
@@ -122,9 +122,9 @@ const Menu = () => {
             </s.Modal>
             <SummaryOrder items={summaryOrder} deleteItem={(index) => deleteSummaryItem(index)}/>
             <span>Digite o nome do cliente</span>
-            <s.Input onChange={(e) => setClientName(e.currentTarget.value)}/>
+            <s.Input value={clientName} onChange={(e) => setClientName(e.currentTarget.value)}/>
             <span>Digite o numero da mesa</span>
-            <s.Input type="number" onChange={(e) => setTableNumber(e.currentTarget.value)}/>
+            <s.Input value={tableNumber} type="number" onChange={(e) => setTableNumber(e.currentTarget.value)}/>
             <Button text="Enviar" onClick={() => sendOrder()}/>
           </s.ContainerSide>
         </s.Col>
