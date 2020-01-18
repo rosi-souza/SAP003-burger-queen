@@ -103,4 +103,8 @@ export default{
    font-size: 40px;
    color: #ee5253;
   `,
+  Erro: styled.p`
+    font-size: 20px;
+    color:#FF4500;
+  `
 }

@@ -15,6 +15,7 @@ const Menu = () => {
   const [isModalOpen, setModal] = useState(false);
   const [extras, setExtras] = useState([]);
   const [selectedExtra, setSelectedExtra] = useState("");
+  const [erro, setErro] = useState('');
 
 
   useEffect(() => {
@@ -55,12 +56,17 @@ const Menu = () => {
       createdAt: Date.now(),
       selectedExtra
     }
-
+    if(!clientName && !tableNumber) {
+      // alert("Preencha os dados")
+      return setErro("Preencha os dados")
+    } else {
       db.collection('Order').add(data).then(() => {
         setClientName('');
         setTableNumber('');
         setSummaryOrder([]);
+        setErro('')
       })
+    }
   };
 
   const additionalCheck = (item) => {
@@ -125,6 +131,7 @@ const Menu = () => {
             <s.Input value={clientName} onChange={(e) => setClientName(e.currentTarget.value)}/>
             <span>Digite o numero da mesa</span>
             <s.Input value={tableNumber} type="number" onChange={(e) => setTableNumber(e.currentTarget.value)}/>
+                <s.Erro>{erro}</s.Erro>
             <Button text="Enviar" onClick={() => sendOrder()}/>
           </s.ContainerSide>
         </s.Col>
