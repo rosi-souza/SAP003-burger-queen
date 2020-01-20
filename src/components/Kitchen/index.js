@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import firebase from '../../utils/firebaseUtils'
 import Card from '../Card';
 import s from './styles';
 import { Link } from 'react-router-dom';
@@ -23,11 +22,13 @@ const Kitchen = () => {
 
   const updateStatus = (status, item) => {
     const time = (Math.abs(new Date() - new Date(item.createdAt)) / 36e5) * 60;
-    console.log(time)
+    const newStatus = setTimeout(() => "Enviando pedido para o garçom...", 3000);
+   
     db.collection('Order').doc(item.id).update({
-      status,
-      timeTotal: ~~(time)
+      status: newStatus,
+      timeTotal: ~~(time),
     })
+    // console.log(newStatus)
   }; 
 
   return(
@@ -39,7 +40,7 @@ const Kitchen = () => {
       {summayOrders.map((item) => (
         <Card className="card-kitchen">
         <s.Header>
-          {item.status}
+          <p>{item.status}</p>
           <p>Cliente: {item.clientName}</p>
           <p>Hora: {new Date(item.createdAt).toLocaleTimeString()}</p>
         </s.Header>
@@ -52,7 +53,7 @@ const Kitchen = () => {
         </s.List>
         <s.StatusChange>
           <s.Description>Alterar status do pedido</s.Description>
-          <s.Button onClick={() =>updateStatus("PRONTO", item)} color="#27ae60">PRONTO</s.Button>
+          <s.Button onClick={() => updateStatus(item)} color="#27ae60">PRONTO</s.Button>
         </s.StatusChange>
         </Card>
       ))}

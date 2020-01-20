@@ -13,7 +13,9 @@ const SummaryOrder = ({ items, deleteItem }) => {
           <>
           <div>
         <s.Item>{item.name} {item.selectedExtra && item.selectedExtra.name || ""}</s.Item> <s.Price>- R$ {item.price}</s.Price>
+            {/* <s.Icon onClick={() => deleteItem(index)} className="material-icons">close</s.Icon> */}
             <s.Icon onClick={() => deleteItem(index)} className="material-icons">close</s.Icon>
+            <s.Icon onClick={() => deleteItem(index)} className="material-icons">add_circle</s.Icon>
           </div>
           </>
         ))}
@@ -24,3 +26,5 @@ const SummaryOrder = ({ items, deleteItem }) => {
 };
 
 export default SummaryOrder;
+//<i class="material-icons">add_circle</i>
+//<i class="material-icons">remove_circle</i>

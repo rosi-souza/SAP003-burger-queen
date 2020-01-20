@@ -9,11 +9,14 @@ export default {
       width: 50%;
       border: 1px #27ae60 solid;
     }
+    .new-status {
+      color: blue;
+    }
   `,
   Header: styled.div`
   `,
   List: styled.div`
-  text-align: initial;
+    text-align: initial;
   `,
   StatusChange: styled.div`
     border-top: 1px solid #294867;

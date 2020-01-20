@@ -75,29 +75,13 @@ export default{
   Col: styled.section`
   `,
   Container: styled.div`
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-  `,
-  Checkmark: styled.span`
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 50%;
-    :hover{
-      background-color: #ee5253; 
-    }
   `,
   SelectItem: styled.input`
-    position: absolute;
-    opacity: 0;
     cursor: pointer;
+    height: 6vh;
+    width: 3vw;
+    color: #ee5253;
+    vertical-align: middle;
   `,
   Icon: styled.i`
    font-size: 40px;
@@ -105,6 +89,12 @@ export default{
   `,
   Erro: styled.p`
     font-size: 20px;
-    color:#FF4500;
+    color: #FF0000;
+    font-weight: bolder;
+  `,
+  Extras: styled.span`
+    font-size: 18px;
+    color: #05133B;
+    font-weight: bold;
   `
 }
