@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default {
-  Wrapper: styled.div`
+  Wrapper: styled.a`
     text-align:center;
     color: #2c3e50;
     cursor: pointer;

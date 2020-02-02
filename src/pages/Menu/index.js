@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import s from './styles';
-import Card from '../Card';
-import SummaryOrder from '../SummaryOrder';
-import Button from '../Button';
-import { Link } from 'react-router-dom';
 import db from '../../utils/firebaseUtils';
+import Card from '../../components/Card';
+import Button from '../../components/Button';
+import SummaryOrder from '../../components/SummaryOrder';
+import Header from '../../components/Header';
 
 const Menu = () => {
-  let [menu, setMenu] = useState([]);
-  let [filteredMenu, setFilteredMenu] = useState([]);
+  const [menu, setMenu] = useState([]);
+  const [filteredMenu, setFilteredMenu] = useState([]);
   let [summaryOrder, setSummaryOrder] = useState([]);
   const [clientName, setClientName] = useState('');
   const [tableNumber, setTableNumber] = useState('');
@@ -41,25 +41,19 @@ const Menu = () => {
     }
   }
 
-  // const deleteSummaryItem = (index) => {
-  //   summaryOrder = summaryOrder.filter((_, i) => i !== index)
-  //   setSummaryOrder(summaryOrder)
-  // };
+  const deleteSummaryItem = (index) => {
+    summaryOrder = summaryOrder.filter((_, i) => i !== index)
+    setSummaryOrder(summaryOrder)
+  };
 
-  const deleteSummaryItem = () => {
-    //summaryOrder = summaryOrder.push(summaryOrder)
-    summaryOrder = summaryOrder.concat(summaryOrder[0])
-    console.log(summaryOrder)
-  }
-
-  const sendOrder = () => {
+  const sendOrder = (item) => {
     const data = {
       summaryOrder,
-      status: 'AGUARDANDO',
+      status: 'PREPARANDO',
       clientName,
       tableNumber,
       createdAt: Date.now(),
-      selectedExtra
+      selectedExtra: item.extras
     }
     if(!clientName && !tableNumber) {
       return setErro("Preencha os dados")
@@ -72,7 +66,7 @@ const Menu = () => {
       })
     }
   };
-
+console.log(selectedExtra)
   const additionalCheck = (item) => {
     if (item.extras) {
       setModal(true)
@@ -95,18 +89,16 @@ const Menu = () => {
 
   return (
     <s.Wrapper>
-      <Card className="card-filter" onClick={() => filterItens('Café da manhã')}>
-        Café da manhã
-      </Card>
-      <Card className="card-filter" onClick={() => filterItens('Lanches')}>
-        Lanche
-      </Card>
-      <Link to="/home">
-        <s.Icon className="material-icons">house</s.Icon>
-      </Link>
+      <Header />
       <s.Title>Cardapio</s.Title>
+        <Card className="card-filter" onClick={() => filterItens('Café da manhã')}>
+          Café da manhã
+        </Card>
+        <Card className="card-filter" onClick={() => filterItens('Lanches')}>
+          Lanche
+        </Card>
       <s.Row className="row">
-        <s.Col className="col-md-8">
+        <s.Col className="col-md-6">
           {filteredMenu.map((item, index) => (
             <Card key={index} className="card-item" onClick={() => additionalCheck(item)}>
               <s.Img bgImg={item.img} alt=""></s.Img>
@@ -115,12 +107,12 @@ const Menu = () => {
             </Card>
           ))}
         </s.Col>
-        <s.Col className="cl-md-6">
+        <s.Col classNae="col-md-6 col-xs-6">
           <s.ContainerSide>
             <s.Modal open={isModalOpen}>
               {extras.name} 
               {extras.extras && extras.extras.map((elem) => 
-                <s.Container > 
+                <s.Container> 
                   <s.SelectItem onChange={() => setSelectedExtra(elem)} type="radio" name="extras" value={elem} />
                   <s.Extras>
                     <label className="extras">{elem.name.toUpperCase()}</label>
@@ -142,6 +134,6 @@ const Menu = () => {
       </s.Row>
     </s.Wrapper>
   )
-}
+};
 
 export default Menu;

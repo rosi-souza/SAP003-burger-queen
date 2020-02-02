@@ -16,16 +16,25 @@ export default{
       border-color: #ee5253;
       color: #05133B;
     }
+    .card-filter {
+      :hover{
+        color: white;
+        background-color: #ee5253;
+        font-size: 20px;
+      }
+    }
+    .card-filter {
+      :visited {
+        color: white;
+        background-color: #ee5253;
+        font-size: 20px;
+      }
+    }
     .button-add {
       background: white;
       color: #ee5253;
       border: solid 1px #ee5253;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-    }
-    .container-scroll {
-      overflow-x: scroll;
-      overflow-y: hidden;
-      white-space: nowrap;
     }
   `,
   Img: styled.div`
@@ -38,6 +47,7 @@ export default{
   Title: styled.h2`
     color: #05133B;
     font-weight: bold;
+    text-align: center;
   `,
   Item: styled.span`
     font-size: 16px;
@@ -68,8 +78,6 @@ export default{
     border-radius: 8px;
     margin: auto;
   `,
-  Content: styled.div`
-  `,
   Row: styled.div`
   `,
   Col: styled.section`
@@ -77,15 +85,30 @@ export default{
   Container: styled.div`
   `,
   SelectItem: styled.input`
-    cursor: pointer;
-    height: 6vh;
-    width: 3vw;
-    color: #ee5253;
-    vertical-align: middle;
-  `,
-  Icon: styled.i`
-   font-size: 40px;
-   color: #ee5253;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance:none;
+    width: 24px;
+    height: 24px;
+    background: #eeeeee;
+    box-shadow: inset 0 0 0 .4em white,
+      0 0 0 .3em; 
+    border-radius: 50%;
+    transition: .2s;
+    cursor:pointer;
+    color: #363945;
+    vertical-align: bottom;
+    margin: 4px;
+    :hover{
+      background: #ee5253;
+      box-shadow: inset 0 0 0 .6em white,
+      0 0 0 .3em;
+    }
+    :checked{
+      background: #ee5253;
+      box-shadow: inset 0 0 0 .4em white,
+        0 0 0 .3em #ee5253;
+    }
   `,
   Erro: styled.p`
     font-size: 20px;
@@ -96,5 +119,9 @@ export default{
     font-size: 18px;
     color: #05133B;
     font-weight: bold;
-  `
+  `,
+  ContainerCard: styled.section`
+    display: flex;
+    justify-content: space-around;
+  `,
 }

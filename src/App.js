@@ -1,12 +1,12 @@
 import React from 'react';
-import Menu from './components/Menu';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
-import Kitchen from './components/Kitchen';
 import Home from './pages/Home';
+import Kitchen from './pages/Kitchen';
+import Menu from './pages/Menu';
 
 function App() {
   return (
