@@ -53,7 +53,7 @@ const Menu = () => {
       clientName,
       tableNumber,
       createdAt: Date.now(),
-      selectedExtra: item.extras
+      selectedExtra
     }
     if(!clientName && !tableNumber) {
       return setErro("Preencha os dados")
